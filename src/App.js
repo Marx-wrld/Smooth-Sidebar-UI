@@ -23,9 +23,23 @@ function App() {
             }}
             style={{ textAlign: "center" }}>
               {" "}
+            <h2>Admin</h2>
           </MenuItem>
+          {/*Adding the remaining MenuItems inside the Menu wrapper*/}
+          <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
+          <MenuItem icon={<PeopleOutlinedIcon />}>Team</MenuItem>
+          <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
+          <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
+          <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQs</MenuItem>
+          <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>
         </Menu>
       </Sidebar>
+      {/* Adding a flex title for our sidebar*/}
+       <main>
+          <h1 style={{ color: "white", marginLeft: "5rem"}}>
+            Smooth Pro-Sidebar
+          </h1>
+        </main>
     </div>
   );
 }
