@@ -31,9 +31,12 @@ function App() {
       )}>
       {/* Adding a sidebar component that wraps a Menu component and a handful of other MenuItem components imported from react-pro-sidebar*/}
       <Sidebar 
+      breakPoint='sm' //for small screen
+      //Adding a transition of 800ms so that it makes it a bit slower
+      transitionDuration={800}
       //Adding the style to change the background color
       backgroundColor="rgb(0, 249, 249, 0.7)"
-      rtl={true}
+      rtl={false}
       //Adding rtl={true} which is false by default
       style={
         { height: "100vh" }
@@ -75,6 +78,10 @@ function App() {
             <h3 style={{ color: "white", marginLeft: "5rem"}}>Toggled</h3>
           ) : (
             <h3 style={{ color: "white", marginLeft: "5rem"}}>Not Toggled</h3>
+          )}
+          {broken && (
+            //small screen text that appears only when the screen is smaller
+            <h1 style={{ color: "white", marginLeft: "5rem" }}>Small screen</h1>
           )}
         </main>
     </div>
