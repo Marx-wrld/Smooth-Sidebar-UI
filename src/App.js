@@ -10,16 +10,30 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 function App() {
   //importing the rtl prop in the useProSidebar hook along with the collapseSidebar prop to enable us reverse the sidebar direction.
-  const { collapseSidebar, rtl } = useProSidebar();
+  const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } = useProSidebar();
+    const toggle = () => {
+      toggleSidebar();
+      if (toggled) {
+        console.log(true);
+        collapseSidebar();
+      } else {
+        console.log(false);
+        collapseSidebar();
+      }
+    };
   return (
     //The component should take a full window height and use flexbox
     <div id="app" style={({ 
       //adding flex direction row-reverse here
       height: "100vh" }, 
-      { display: "flex", flexDirection: "row-reverse"}
+      { display: "flex", 
+      flexDirection: "row"}
       )}>
       {/* Adding a sidebar component that wraps a Menu component and a handful of other MenuItem components imported from react-pro-sidebar*/}
-      <Sidebar rtl={true}
+      <Sidebar 
+      //Adding the style to change the background color
+      backgroundColor="rgb(0, 249, 249, 0.7)"
+      rtl={true}
       //Adding rtl={true} which is false by default
       style={
         { height: "100vh" }
@@ -47,9 +61,21 @@ function App() {
       </Sidebar>
       {/* Adding a flex title for our sidebar*/}
        <main>
-          <h1 style={{ color: "white", marginLeft: "5rem"}}>
+          <h1 
+          onClick={() => {
+            toggle(); //Logs true or false to the console depending on whether the sidebar is toggled or not
+          }}
+          style={
+            { color: "white",
+             marginLeft: "5rem"}
+             }>
             Smooth Pro-Sidebar
           </h1>
+          { toggled ? (
+            <h3 style={{ color: "white", marginLeft: "5rem"}}>Toggled</h3>
+          ) : (
+            <h3 style={{ color: "white", marginLeft: "5rem"}}>Not Toggled</h3>
+          )}
         </main>
     </div>
   );
