@@ -9,19 +9,30 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 function App() {
-  const { collapseSidebar } = useProSidebar();
+  //importing the rtl prop in the useProSidebar hook along with the collapseSidebar prop to enable us reverse the sidebar direction.
+  const { collapseSidebar, rtl } = useProSidebar();
   return (
     //The component should take a full window height and use flexbox
-    <div id="app" style={({ height: "100vh" }, { display: "flex"})}>
+    <div id="app" style={({ 
+      //adding flex direction row-reverse here
+      height: "100vh" }, 
+      { display: "flex", flexDirection: "row-reverse"}
+      )}>
       {/* Adding a sidebar component that wraps a Menu component and a handful of other MenuItem components imported from react-pro-sidebar*/}
-      <Sidebar style={{ height: "100vh" }}> {/* a height of 100vh to the sidebar so that it takes up the full height of the screen*/}
+      <Sidebar rtl={true}
+      //Adding rtl={true} which is false by default
+      style={
+        { height: "100vh" }
+        }> {/* a height of 100vh to the sidebar so that it takes up the full height of the screen*/}
         <Menu>
           <MenuItem
             icon={<MenuOutlinedIcon/>}
             onClick={() => { //adding the onclick event that fires the collapseSidebar hook with help of useSidebar hook that helps us implement the collapse functionality.
               collapseSidebar();
             }}
-            style={{ textAlign: "center" }}>
+            style={
+              { textAlign: "center" }}
+              >
               {" "}
             <h2>Admin</h2>
           </MenuItem>
